@@ -56,6 +56,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            display: inline-block;
         }
         .btn-gold:hover { box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); transform: translateY(-3px); }
 
@@ -66,48 +67,38 @@
             border-radius: 4px;
             font-weight: 600;
             border: 2px solid var(--gold-solid);
+            display: inline-block;
         }
         .btn-outline:hover { background: rgba(212, 175, 55, 0.1); }
 
         /* --- Hero Section --- */
- /* --- Hero Section Updated --- */
-header {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 10%;
-    position: relative;
-    /* Ensure the path is correct and it covers the area */
-    background: url('Banner.jpeg') no-repeat center center;
-    background-size: cover; 
-    padding-top: 80px;
-    /* Removed the mask-image that was hiding the edges of your image */
-}
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10%;
+            position: relative;
+            background: url('Banner.jpeg') no-repeat center center;
+            background-size: cover; 
+            padding-top: 80px;
+        }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    /* This creates the dark "tint". Adjust 0.85 to 0.7 if you want it brighter */
-    background: rgba(4, 4, 4, 0.85); 
-    z-index: 1;
-}
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 4, 4, 0.85); 
+            z-index: 1;
+        }
 
-.hero-content { 
-    position: relative; 
-    z-index: 2; 
-}
+        .hero-content { position: relative; z-index: 2; width: 100%; }
 
-        /* Centered Logo Style - Adjusted margin-bottom here */
         .hero-logo {
             height: 120px;
             width: auto;
-            margin-bottom: 0.5rem; /* Reduced from 1.5rem to decrease gap */
+            margin-bottom: 0.5rem;
             animation: fadeInDown 0.8s ease;
         }
 
@@ -120,6 +111,14 @@ header::before {
         }
         .hero-content h1 span { background: var(--gold-metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-content p { font-size: 1.3rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; font-weight: 300; }
+
+        .hero-flag {
+            height: 0.8em; 
+            vertical-align: middle; 
+            margin-left: 10px; 
+            border-radius: 2px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
 
         /* --- Sections --- */
         .section { padding: 8rem 10%; }
@@ -158,11 +157,29 @@ header::before {
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .section { padding: 6rem 5%; }
+            nav { padding: 1rem 5%; justify-content: space-between; }
+            .nav-links { display: none; } /* Clean look for mobile */
+            
+            header { padding: 0 5%; height: auto; min-height: 100vh; padding-top: 120px; padding-bottom: 60px; }
             .hero-logo { height: 80px; }
+            .hero-content h1 { font-size: 2.2rem; margin-bottom: 1.5rem; }
+            .hero-content p { font-size: 1.1rem; margin-bottom: 2.5rem; }
+            .hero-flag { height: 0.7em; margin-left: 5px; }
+
+            .section { padding: 5rem 5%; }
+            .section-header { margin-bottom: 3rem; }
+            .section-header h2 { font-size: 2.2rem; }
+            
+            .grid { gap: 1.5rem; }
+            .card { padding: 2rem; }
+            
+            .lang-list { gap: 1.5rem; font-size: 0.95rem; }
+            .lang-list span::after { right: -0.8rem; }
+
+            .hero-content div { flex-direction: column; width: 100%; }
+            .btn-gold, .btn-outline { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -174,7 +191,7 @@ header::before {
             <li><a href="#focus">Focus Areas</a></li>
             <li><a href="#contact">Consultation</a></li>
         </ul>
-        <a href="https://forms.gle/AjCy8AmV7EHxTVdc9" class="btn-gold" style="padding: 0.7rem 1.8rem;">Request Invite</a>
+        <a href="https://forms.gle/AjCy8AmV7EHxTVdc9" class="btn-gold" style="padding: 0.7rem 1.8rem; font-size: 0.75rem;">Request Invite</a>
     </nav>
 
     <header>
@@ -183,8 +200,8 @@ header::before {
             
             <p style="text-transform: uppercase; letter-spacing: 3px; color: var(--gold-solid); font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">The Executive Language Pathway</p>
             <h1>Master German. <br>Unlock <span>Career</span> Growth. 
-    <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag" style="height: 0.8em; vertical-align: middle; margin-left: 10px; border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-</h1>
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag" class="hero-flag">
+            </h1>
             <p>Bridge the gap between language certification and professional fluency. Personalized coaching designed for job readiness and absolute speaking confidence.</p>
             <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
                 <a href="https://forms.gle/AjCy8AmV7EHxTVdc9" class="btn-gold">Book Your Private Demo</a>
@@ -204,7 +221,7 @@ header::before {
                 <a href="#contact" class="btn-outline">Discuss Your Goals</a>
             </div>
             <div style="background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
-                <span style="font-size: 5rem; color: var(--gold-solid);">A1 ➔ B2</span>
+                <span style="font-size: clamp(3rem, 10vw, 5rem); color: var(--gold-solid);">A1 ➔ B2</span>
                 <p style="color: var(--text-main); font-weight: 600; margin-top: 1rem;">Exam Prep & Foundation</p>
             </div>
         </div>
