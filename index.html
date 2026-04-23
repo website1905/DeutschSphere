@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeutschSphere | Mastering German, Executively</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #040404;
+            --bg-card: #050505;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --gold-metallic: linear-gradient(135deg, #bf9b30 0%, #e6d191 50%, #d4af37 100%);
+            --gold-solid: #d4af37;
+            --shadow-premium: 0 20px 40px rgba(0,0,0,0.4);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 900; letter-spacing: -0.5px; }
+        a { text-decoration: none; transition: var(--transition-smooth); }
+
+        /* --- Navbar --- */
+        nav {
+            padding: 1.2rem 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(16, 18, 20, 0.85);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(24, 20, 20, 0.05);
+        }
+
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; margin-right: 2rem; }
+        .nav-links a { color: var(--text-muted); font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--gold-solid); transform: translateY(-2px); }
+
+        /* --- Buttons --- */
+        .btn-gold {
+            background: var(--gold-metallic);
+            color: #101214;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .btn-gold:hover { box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); transform: translateY(-3px); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-solid);
+            padding: 0.9rem 2.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            border: 2px solid var(--gold-solid);
+        }
+        .btn-outline:hover { background: rgba(212, 175, 55, 0.1); }
+
+        /* --- Hero Section --- */
+ /* --- Hero Section Updated --- */
+header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10%;
+    position: relative;
+    /* Ensure the path is correct and it covers the area */
+    background: url('banner.jpeg') no-repeat center center;
+    background-size: cover; 
+    padding-top: 80px;
+    /* Removed the mask-image that was hiding the edges of your image */
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* This creates the dark "tint". Adjust 0.85 to 0.7 if you want it brighter */
+    background: rgba(4, 4, 4, 0.85); 
+    z-index: 1;
+}
+
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+}
+
+        /* Centered Logo Style - Adjusted margin-bottom here */
+        .hero-logo {
+            height: 120px;
+            width: auto;
+            margin-bottom: 0.5rem; /* Reduced from 1.5rem to decrease gap */
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            animation: fadeInDown 1s ease;
+        }
+        .hero-content h1 span { background: var(--gold-metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-content p { font-size: 1.3rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; font-weight: 300; }
+
+        /* --- Sections --- */
+        .section { padding: 8rem 10%; }
+        .section-header { text-align: center; margin-bottom: 6rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .section-header h2 { font-size: 3rem; color: var(--text-main); margin-bottom: 1.5rem; }
+        .section-header p { color: var(--gold-solid); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; }
+        .card {
+            background-color: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(212, 175, 55, 0.3); box-shadow: var(--shadow-premium); }
+        .card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold-metallic); transform: scaleX(0); transition: var(--transition-smooth); }
+        .card:hover::after { transform: scaleX(1); }
+        .card-icon { font-size: 2rem; margin-bottom: 2rem; color: var(--gold-solid); }
+        .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main); }
+        .card p { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+
+        .languages { background-color: #0c0e10; padding: 3rem 10%; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .languages p { color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+        .lang-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; font-weight: 600; color: var(--text-main); font-size: 1.1rem; }
+        .lang-list span { position: relative; }
+        .lang-list span::after { content: '•'; color: var(--gold-solid); position: absolute; right: -1.8rem; opacity: 0.5; }
+        .lang-list span:last-child::after { content: ''; }
+
+        footer { padding: 5rem 10% 3rem; background-color: #0c0e10; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+        footer .footer-logo { margin: 0 auto 2rem; height: 60px; display: block; }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .section { padding: 6rem 5%; }
+            .hero-logo { height: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about">Philosophy</a></li>
+            <li><a href="#focus">Focus Areas</a></li>
+            <li><a href="#contact">Consultation</a></li>
+        </ul>
+        <a href="https://forms.gle/AjCy8AmV7EHxTVdc9" class="btn-gold" style="padding: 0.7rem 1.8rem;">Request Invite</a>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <img src="logo.png" alt="DeutschSphere Logo" class="hero-logo">
+            
+            <p style="text-transform: uppercase; letter-spacing: 3px; color: var(--gold-solid); font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">The Executive Language Pathway</p>
+            <h1>Master German. <br>Unlock <span>Career</span> Growth. 🇩🇪</h1>
+            <p>Bridge the gap between language certification and professional fluency. Personalized coaching designed for job readiness and absolute speaking confidence.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://forms.gle/AjCy8AmV7EHxTVdc9" class="btn-gold">Book Your Private Demo</a>
+                <a href="#focus" class="btn-outline">Explore Focus</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section reveal" id="about" style="background-color: #0c0e10;">
+        <div class="grid" style="align-items: center;">
+            <div>
+                <div class="section-header" style="text-align: left; margin-left: 0;">
+                    <p>Our Philosophy</p>
+                    <h2>Built by experience, <br>not just textbooks.</h2>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-weight: 300;">Having navigated the challenges of clearing certifications while working in Germany, I understand the friction students face. I don't just teach grammar; I teach the practical, high-impact language you need to survive and thrive in professional environments.</p>
+                <a href="#contact" class="btn-outline">Discuss Your Goals</a>
+            </div>
+            <div style="background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
+                <span style="font-size: 5rem; color: var(--gold-solid);">A1 ➔ B2</span>
+                <p style="color: var(--text-main); font-weight: 600; margin-top: 1rem;">Exam Prep & Foundation</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal" id="focus">
+        <div class="section-header">
+            <p>Your Path to Fluency</p>
+            <h2>Tailored Focus Areas</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🏗️</div>
+                <h3>Foundation</h3>
+                <p>Master the core structure of German. Built properly, so complex concepts feel natural later.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h3>Job Readiness</h3>
+                <p>Corporate vocabulary, email etiquette, and interview preparation for the German market.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🗣️</div>
+                <h3>Speaking</h3>
+                <p>Formal & Informal conversation practice to eliminate hesitation and build elite confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="languages reveal">
+        <p>Instruction Supported In</p>
+        <div class="lang-list">
+            <span>Hindi</span> <span>Urdu</span> <span>English</span> <span>Malayalam</span> <span>Pashto</span>
+        </div>
+    </div>
+
+    <section class="section reveal" id="contact" style="text-align: center; background-image: linear-gradient(to bottom, var(--bg-dark), #0c0e10);">
+        <div class="section-header">
+            <p>Take the Next Step</p>
+            <h2>Ready to Upgrade Your Profile?</h2>
+        </div>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem; font-weight: 300;">Course durations and investment vary by level. Fill out the form to receive your exclusive class invite and detailed briefing.</p>
+        <a href="https://forms.gle/AjCy8AmV7EHxTVdc9" class="btn-gold" style="font-size: 1rem; padding: 1.2rem 3rem;">Access Application Form</a>
+    </section>
+
+    <footer>
+        <img src="logo.png" alt="DeutschSphere Logo" class="footer-logo">
+        <p>&copy; 2026 DeutschSphere. All Rights Reserved. <br> Built for ambition, by experience.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                }
+            });
+        });
+
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+</html>
